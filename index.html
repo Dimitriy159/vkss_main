@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Військовий коледж сержантського складу</title>
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ececec;
+      color: #222;
+    }
+
+    .vkss-links-block {
+      padding: 20px 24px 60px;
+      background: #ececec;
+    }
+
+    .vkss-main-title {
+      margin: 0 0 32px;
+      text-align: center;
+      font-size: 64px;
+      line-height: 1.05;
+      font-weight: 300;
+      color: #222;
+    }
+
+    .vkss-grid {
+      max-width: 80%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr 1fr;
+      gap: 34px 38px;
+      align-items: start;
+    }
+
+    .vkss-item,
+    .vkss-banner-item {
+      text-align: center;
+    }
+
+    .vkss-with-line {
+      padding-top: 34px;
+      border-top: 1px solid #8b8b8b;
+    }
+
+    .vkss-icon-circle {
+      width: 138px;
+      height: 138px;
+      margin: 0 auto 18px;
+      border: 4px solid #2f3b33;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #2f3b33;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .vkss-icon-circle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .vkss-icon-circle svg {
+      width: 56px;
+      height: 56px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .vkss-item-title {
+      margin: 0 0 14px;
+      font-size: 34px;
+      line-height: 1.08;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .vkss-item-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .vkss-item-links a {
+      font-size: 18px;
+      line-height: 1.35;
+      color: #4a4a4a;
+      text-decoration: none;
+    }
+
+    .vkss-item-links a:hover {
+      text-decoration: underline;
+    }
+
+    .vkss-subtext {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #4a4a4a;
+    }
+
+    .vkss-phone {
+      margin: 0;
+    }
+
+    .vkss-phone a {
+      font-size: 20px;
+      font-weight: 500;
+      color: #3c3c3c;
+      text-decoration: none;
+    }
+
+    .vkss-phone a:hover {
+      text-decoration: underline;
+    }
+
+    .vkss-banner-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    .vkss-banner-img {
+      width: 100%;
+      max-width: 680px;
+      height: auto;
+      display: block;
+      margin: 58px auto 0;
+    }
+
+    @media (max-width: 1200px) {
+      .vkss-main-title {
+        font-size: 52px;
+      }
+
+      .vkss-grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .vkss-banner-img {
+        margin-top: 10px;
+        max-width: 760px;
+      }
+
+      .vkss-with-line {
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .vkss-links-block {
+        padding: 18px 14px 36px;
+      }
+
+      .vkss-main-title {
+        font-size: 34px;
+        line-height: 1.12;
+        margin-bottom: 22px;
+      }
+
+      .vkss-icon-circle {
+        width: 112px;
+        height: 112px;
+        margin-bottom: 14px;
+      }
+
+      .vkss-icon-circle svg {
+        width: 46px;
+        height: 46px;
+      }
+
+      .vkss-item-title {
+        font-size: 26px;
+      }
+
+      .vkss-item-links a,
+      .vkss-subtext,
+      .vkss-phone a {
+        font-size: 17px;
+      }
+    }
+    .vkss-modal-link {
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.vkss-modal-link:hover {
+  text-decoration: underline;
+}
+
+.vkss-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.vkss-modal-content {
+  position: relative;
+  width: min(700px, 100%);
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  animation: vkssModalShow 0.25s ease;
+}
+
+.vkss-modal-title {
+  margin: 0 0 22px;
+  font-size: 30px;
+  line-height: 1.15;
+  color: #222;
+  text-align: center;
+}
+
+.vkss-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  color: #555;
+}
+
+.vkss-modal-close:hover {
+  color: #000;
+}
+
+.vkss-modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vkss-modal-list a {
+  display: block;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  color: #2f3b33;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.vkss-modal-list a:hover {
+  background: #e7ebef;
+  transform: translateX(4px);
+}
+
+@keyframes vkssModalShow {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .vkss-modal-content {
+    padding: 26px 18px 20px;
+  }
+
+  .vkss-modal-title {
+    font-size: 24px;
+    padding-right: 20px;
+  }
+
+  .vkss-modal-list a {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+}
+
+    </style>
+</head>
+<body>
+<section class="vkss-links-block">
+    <h2 class="vkss-main-title">Військовий коледж сержантського складу</h2>
+
+    <div class="vkss-grid">
+        <!-- Освітня діяльність -->
+        <div class="vkss-item">
+            <a href="#" class="vkss-icon-circle" aria-label="Освітня діяльність">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 5.5C4 4.67 4.67 4 5.5 4H10c1.16 0 2.22.41 3 1.09A4.47 4.47 0 0 1 16 4h2.5c.83 0 1.5.67 1.5 1.5V18a1 1 0 0 1-1.45.9A6.8 6.8 0 0 0 16 18c-1.16 0-2.24.3-3 .82A5.83 5.83 0 0 0 10 18c-.9 0-1.78.18-2.55.5A1 1 0 0 1 6 17.6V5.5Z"/>
+                </svg>
+            </a>
+
+            <h3 class="vkss-item-title">Освітня діяльність</h3>
+        </div>
+
+        <!-- Центральний банер -->
+        <div class="vkss-banner-item">
+            <a href="#" class="vkss-banner-link">
+                <img src="https://hups.mil.gov.ua/wp-content/uploads/2024/04/vkss-losung-hnups_01-1140x300-1.jpg" alt="Слідуй за мною, роби як я!" class="vkss-banner-img">
+            </a>
+        </div>
+
+        <!-- Абітурієнту -->
+        <div class="vkss-item">
+            <div class="vkss-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/>
+                    <path d="M14 3v5h5"/>
+                    <path d="M9 13h6"/>
+                    <path d="M9 17h6"/>
+                </svg>
+            </div>
+
+            <h3 class="vkss-item-title">Абітурієнту</h3>
+
+            <div class="vkss-item-links">
+                <a href="pravyla-pryiomu.pdf" target="_blank">Правила прийому до ВКСС</a>
+                <a href="dovidnyk-abituriienta.pdf" target="_blank">Довідник абітурієнта</a>
+            </div>
+        </div>
+
+        <!-- Скринька довіри -->
+        <div class="vkss-item vkss-with-line">
+            <a href="#" class="vkss-icon-circle" aria-label="Скринька довіри">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 7h10a2 2 0 0 1 2 2v8H6a2 2 0 0 1-2-2V7Z"/>
+                    <path d="M16 9h2a2 2 0 0 1 2 2v6h-4V9Z"/>
+                    <path d="M4 9l6 5 6-5"/>
+                </svg>
+            </a>
+
+            <h3 class="vkss-item-title">Скринька довіри</h3>
+        </div>
+
+        <!-- Телефон -->
+        <div class="vkss-item vkss-with-line">
+            <div class="vkss-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3 .5.7 0 1.2.5 1.2 1.2V20c0 .7-.5 1.2-1.2 1.2C10.9 21.2 2.8 13.1 2.8 3.2 2.8 2.5 3.3 2 4 2h3.4c.7 0 1.2.5 1.2 1.2 0 1 .2 2 .5 3 .1.4 0 .9-.3 1.2l-2.2 2.2Z"/>
+                    <path d="M15.5 4.5a5 5 0 0 1 4 4"/>
+                    <path d="M15.5 1.5a8 8 0 0 1 7 7"/>
+                </svg>
+            </div>
+
+            <h3 class="vkss-item-title">Телефон для довідок</h3>
+
+            <p class="vkss-phone">
+                <a href="tel:+380932416380">+38 (093) 241-63-80</a>
+            </p>
+        </div>
+
+        <div class="vkss-item vkss-with-line">
+            <div class="vkss-icon-circle" onclick="openDepartmentsModal()" style="cursor: pointer;">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 6h7v5H4z"/>
+                    <path d="M13 6h7v5h-7z"/>
+                    <path d="M4 13h7v5H4z"/>
+                    <path d="M13 13h7v5h-7z"/>
+                </svg>
+            </div>
+
+            <h3 class="vkss-item-title" onclick="openDepartmentsModal()">Відділення та циклові комісії</h3>
+        </div>
+
+        <div id="departmentsModal" class="vkss-modal">
+            <div class="vkss-modal-content">
+                <span class="vkss-modal-close" onclick="closeDepartmentsModal()">&times;</span>
+
+                <h2 class="vkss-modal-title">Відділення та циклові комісії</h2>
+
+                <div style="text-align: center" class="vkss-modal-list">
+                    <a href="https://dimitriy159.github.io/vkss_viddil_1">Відділення підготовки конструкції та експлуатації авіаційної техніки</a>
+                    <a href="https://dimitriy159.github.io/vkss_viddil_2">Відділення підготовки експлуатації <br> радіоелектронних систем та пристроїв</a>
+                    <a href="https://dimitriy159.github.io/education_quality">Науково-методичне відділення забезпечення якості освітньої діяльності</a>
+                    <a href="https://dimitriy159.github.io/combined_arms">Циклова комісія загальновійськових дисциплін</a>
+                    <a href="https://dimitriy159.github.io/general_education">Циклова комісія загальноосвітніх дисциплін</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<script>
+function openDepartmentsModal() {
+  document.getElementById('departmentsModal').style.display = 'flex'
+}
+
+function closeDepartmentsModal() {
+  document.getElementById('departmentsModal').style.display = 'none'
+}
+
+window.addEventListener('click', function(e) {
+  const modal = document.getElementById('departmentsModal')
+  if (e.target === modal) {
+    closeDepartmentsModal()
+  }
+})
+
+</script>
+</html>
