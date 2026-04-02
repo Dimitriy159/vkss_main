@@ -4,320 +4,27 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Військовий коледж сержантського складу</title>
-    <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ececec;
-      color: #222;
-    }
-
-    .vkss-links-block {
-      padding: 20px 24px 60px;
-      background: #ececec;
-    }
-
-    .vkss-main-title {
-      margin: 0 0 32px;
-      text-align: center;
-      font-size: 64px;
-      line-height: 1.05;
-      font-weight: 300;
-      color: #222;
-    }
-
-    .vkss-grid {
-      max-width: 80%;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.3fr 1fr;
-      gap: 34px 38px;
-      align-items: start;
-    }
-
-    .vkss-item,
-    .vkss-banner-item {
-      text-align: center;
-    }
-
-    .vkss-with-line {
-      padding-top: 34px;
-      border-top: 1px solid #8b8b8b;
-    }
-
-    .vkss-icon-circle {
-      width: 138px;
-      height: 138px;
-      margin: 0 auto 18px;
-      border: 4px solid #2f3b33;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: #2f3b33;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .vkss-icon-circle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .vkss-icon-circle svg {
-      width: 56px;
-      height: 56px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .vkss-item-title {
-      margin: 0 0 14px;
-      font-size: 34px;
-      line-height: 1.08;
-      font-weight: 700;
-      color: #222;
-    }
-
-    .vkss-item-links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .vkss-item-links a {
-      font-size: 18px;
-      line-height: 1.35;
-      color: #4a4a4a;
-      text-decoration: none;
-    }
-
-    .vkss-item-links a:hover {
-      text-decoration: underline;
-    }
-
-    .vkss-subtext {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.35;
-      color: #4a4a4a;
-    }
-
-    .vkss-phone {
-      margin: 0;
-    }
-
-    .vkss-phone a {
-      font-size: 20px;
-      font-weight: 500;
-      color: #3c3c3c;
-      text-decoration: none;
-    }
-
-    .vkss-phone a:hover {
-      text-decoration: underline;
-    }
-
-    .vkss-banner-link {
-      display: block;
-      text-decoration: none;
-    }
-
-    .vkss-banner-img {
-      width: 100%;
-      max-width: 680px;
-      height: auto;
-      display: block;
-      margin: 58px auto 0;
-    }
-
-    @media (max-width: 1200px) {
-      .vkss-main-title {
-        font-size: 52px;
-      }
-
-      .vkss-grid {
-        grid-template-columns: 1fr;
-        gap: 26px;
-      }
-
-      .vkss-banner-img {
-        margin-top: 10px;
-        max-width: 760px;
-      }
-
-      .vkss-with-line {
-        border-top: none;
-        padding-top: 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .vkss-links-block {
-        padding: 18px 14px 36px;
-      }
-
-      .vkss-main-title {
-        font-size: 34px;
-        line-height: 1.12;
-        margin-bottom: 22px;
-      }
-
-      .vkss-icon-circle {
-        width: 112px;
-        height: 112px;
-        margin-bottom: 14px;
-      }
-
-      .vkss-icon-circle svg {
-        width: 46px;
-        height: 46px;
-      }
-
-      .vkss-item-title {
-        font-size: 26px;
-      }
-
-      .vkss-item-links a,
-      .vkss-subtext,
-      .vkss-phone a {
-        font-size: 17px;
-      }
-    }
-    .vkss-modal-link {
-  color: #4a4a4a;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-.vkss-modal-link:hover {
-  text-decoration: underline;
-}
-
-.vkss-modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.vkss-modal-content {
-  position: relative;
-  width: min(700px, 100%);
-  background: #fff;
-  border-radius: 16px;
-  padding: 32px 28px 28px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  animation: vkssModalShow 0.25s ease;
-}
-
-.vkss-modal-title {
-  margin: 0 0 22px;
-  font-size: 30px;
-  line-height: 1.15;
-  color: #222;
-  text-align: center;
-}
-
-.vkss-modal-close {
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  font-size: 34px;
-  line-height: 1;
-  cursor: pointer;
-  color: #555;
-}
-
-.vkss-modal-close:hover {
-  color: #000;
-}
-
-.vkss-modal-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.vkss-modal-list a {
-  display: block;
-  padding: 13px 13px;
-  border-radius: 10px;
-  background: #f3f4f6;
-  color: #2f3b33;
-  text-decoration: none;
-  font-size: 18px;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.vkss-modal-list a:hover {
-  background: #e7ebef;
-  transform: translateX(4px);
-}
-
-@keyframes vkssModalShow {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 768px) {
-  .vkss-modal-content {
-    padding: 26px 18px 20px;
-  }
-
-  .vkss-modal-title {
-    font-size: 24px;
-    padding-right: 20px;
-  }
-
-  .vkss-modal-list a {
-    font-size: 16px;
-    padding: 12px 14px;
-  }
-}
-
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <section class="vkss-links-block">
     <h2 class="vkss-main-title">Військовий коледж сержантського складу</h2>
-
     <div class="vkss-grid">
         <!-- Освітня діяльність -->
-        <div class="vkss-item">
-            <a href="#" class="vkss-icon-circle" aria-label="Освітня діяльність">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a href="https://hups.mil.gov.ua/vijskovij-koledzh-serzhantskogo-skladu/osvitnia-diialnist-vkss/"
+           class="vkss-item">
+            <div class="vkss-icon-circle" aria-label="Освітня діяльність">
+                <svg viewBox="0 0 24 24">
                     <path d="M4 5.5C4 4.67 4.67 4 5.5 4H10c1.16 0 2.22.41 3 1.09A4.47 4.47 0 0 1 16 4h2.5c.83 0 1.5.67 1.5 1.5V18a1 1 0 0 1-1.45.9A6.8 6.8 0 0 0 16 18c-1.16 0-2.24.3-3 .82A5.83 5.83 0 0 0 10 18c-.9 0-1.78.18-2.55.5A1 1 0 0 1 6 17.6V5.5Z"/>
                 </svg>
-            </a>
-
+            </div>
             <h3 class="vkss-item-title">Освітня діяльність</h3>
-        </div>
-
+        </a>
         <!-- Центральний банер -->
         <div class="vkss-banner-item">
-            <a href="#" class="vkss-banner-link">
-                <img src="https://hups.mil.gov.ua/wp-content/uploads/2024/04/vkss-losung-hnups_01-1140x300-1.jpg" alt="Слідуй за мною, роби як я!" class="vkss-banner-img">
-            </a>
+            <img src="images/vkss_logo.png"
+                 alt="Слідуй за мною, роби як я!" class="vkss-banner-img">
         </div>
-
         <!-- Абітурієнту -->
         <div class="vkss-item">
             <div class="vkss-icon-circle" aria-hidden="true">
@@ -328,28 +35,26 @@
                     <path d="M9 17h6"/>
                 </svg>
             </div>
-
             <h3 class="vkss-item-title">Абітурієнту</h3>
-
             <div class="vkss-item-links">
-                <a href="pravyla-pryiomu.pdf" target="_blank">Правила прийому до ВКСС</a>
-                <a href="dovidnyk-abituriienta.pdf" target="_blank">Довідник абітурієнта</a>
+                <a href="https://hups.mil.gov.ua/wp-content/uploads/admission-university/BKCC/Pravyla_priyomu_VKSS_KHNUPS_2025.pdf">Правила
+                    прийому до ВКСС</a>
+                <a href="https://hups.mil.gov.ua/wp-content/uploads/admission-university/BKCC/Dovidnik_abiturienta_BKCC_2025.pdf">Довідник
+                    абітурієнта</a>
             </div>
         </div>
-
         <!-- Скринька довіри -->
-        <div class="vkss-item vkss-with-line">
-            <a href="#" class="vkss-icon-circle" aria-label="Скринька довіри">
+        <a href="https://hups.mil.gov.ua/vijskovij-koledzh-serzhantskogo-skladu/skrynka-doviry-vkss/"
+           class="vkss-item vkss-with-line">
+            <div class="vkss-icon-circle" aria-label="Скринька довіри">
                 <svg viewBox="0 0 24 24">
                     <path d="M4 7h10a2 2 0 0 1 2 2v8H6a2 2 0 0 1-2-2V7Z"/>
                     <path d="M16 9h2a2 2 0 0 1 2 2v6h-4V9Z"/>
                     <path d="M4 9l6 5 6-5"/>
                 </svg>
-            </a>
-
+            </div>
             <h3 class="vkss-item-title">Скринька довіри</h3>
-        </div>
-
+        </a>
         <!-- Телефон -->
         <div class="vkss-item vkss-with-line">
             <div class="vkss-icon-circle" aria-hidden="true">
@@ -359,16 +64,13 @@
                     <path d="M15.5 1.5a8 8 0 0 1 7 7"/>
                 </svg>
             </div>
-
             <h3 class="vkss-item-title">Телефон для довідок</h3>
-
             <p class="vkss-phone">
                 <a href="tel:+380932416380">+38 (093) 241-63-80</a>
             </p>
         </div>
-
-        <div class="vkss-item vkss-with-line">
-            <div class="vkss-icon-circle" onclick="openDepartmentsModal()" style="cursor: pointer;">
+        <a onclick="openDepartmentsModal()" class="vkss-item vkss-with-line">
+            <div class="vkss-icon-circle" style="cursor: pointer;">
                 <svg viewBox="0 0 24 24">
                     <path d="M4 6h7v5H4z"/>
                     <path d="M13 6h7v5h-7z"/>
@@ -376,43 +78,265 @@
                     <path d="M13 13h7v5h-7z"/>
                 </svg>
             </div>
-
-            <h3 class="vkss-item-title" onclick="openDepartmentsModal()">Відділення та циклові комісії</h3>
-        </div>
-
+            <h3 class="vkss-item-title">Відділення та циклові комісії</h3>
+        </a>
         <div id="departmentsModal" class="vkss-modal">
             <div class="vkss-modal-content">
                 <span class="vkss-modal-close" onclick="closeDepartmentsModal()">&times;</span>
-
                 <h2 class="vkss-modal-title">Відділення та циклові комісії</h2>
-
                 <div class="vkss-modal-list">
-                    <a href="https://dimitriy159.github.io/vkss_viddil_1">Відділення підготовки конструкції та експлуатації авіаційної техніки</a>
-                    <a href="https://dimitriy159.github.io/vkss_viddil_2">Відділення підготовки експлуатації радіоелектронних систем та пристроїв</a>
-                    <a href="https://dimitriy159.github.io/education_quality">Відділення забезпечення якості освітньої діяльності</a>
-                    <a href="https://dimitriy159.github.io/combined_arms">Циклова комісія загальновійськових дисциплін</a>
-                    <a href="https://dimitriy159.github.io/general_education">Циклова комісія загальноосвітніх дисциплін</a>
+                    <a href="https://dimitriy159.github.io/vkss_viddil_1">Відділення підготовки конструкції та
+                        експлуатації авіаційної техніки</a>
+                    <a href="https://dimitriy159.github.io/vkss_viddil_2">Відділення підготовки експлуатації
+                        радіоелектронних систем та пристроїв</a>
+                    <a href="https://dimitriy159.github.io/education_quality">Відділення забезпечення якості освітньої
+                        діяльності</a>
+                    <a href="https://dimitriy159.github.io/combined_arms">Циклова комісія загальновійськових
+                        дисциплін</a>
+                    <a href="https://dimitriy159.github.io/general_education">Циклова комісія загальноосвітніх
+                        дисциплін</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<section class="vkss-content-section">
+    <h2 class="vkss-section-title">Програма вступних екзаменів до Військового коледжу сержантського складу</h2>
+    <div class="vkss-exams-grid">
+        <a href="https://hups.mil.gov.ua/wp-content/uploads/admission-university/BKCC/Programa_vstupnih_viprobuvan_z_ukrayinskoyi_movi_2025.pdf"
+           class="vkss-exam-card">
+            <span>ПРОГРАМА ВСТУПНИХ ВИПРОБОВУВАНЬ З УКРАЇНСЬКОЇ МОВИ</span>
+            <svg viewBox="0 0 24 24">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/>
+                <path d="M14 3v5h5"/>
+                <path d="M10 13l4-4"/>
+                <path d="M12 9h2v2"/>
+            </svg>
+        </a>
+        <a href="https://hups.mil.gov.ua/wp-content/uploads/admission-university/BKCC/Programa_vstupnih_viprobuvan_z_Istoriyi_Ukrayini_2025.pdf"
+           class="vkss-exam-card">
+            <span>ПРОГРАМА ВСТУПНИХ ВИПРОБОВУВАНЬ З ІСТОРІЇ УКРАЇНИ</span>
+            <svg viewBox="0 0 24 24">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/>
+                <path d="M14 3v5h5"/>
+                <path d="M10 13l4-4"/>
+                <path d="M12 9h2v2"/>
+            </svg>
+        </a>
+        <a href="https://hups.mil.gov.ua/wp-content/uploads/admission-university/BKCC/Programa_vstupnih_viprobuvan_z_matematiki_2025.pdf"
+           class="vkss-exam-card">
+            <span>ПРОГРАМА ВСТУПНИХ ВИПРОБОВУВАНЬ З МАТЕМАТИКИ</span>
+            <svg viewBox="0 0 24 24">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/>
+                <path d="M14 3v5h5"/>
+                <path d="M10 13l4-4"/>
+                <path d="M12 9h2v2"/>
+            </svg>
+        </a>
+    </div>
+</section>
+<section class="vkss-content-section">
+    <h2 class="vkss-subsection-title">Відео</h2>
+    <div class="vkss-media-layout">
+        <div class="vkss-video-sidebar">
+            <div class="vkss-video-sidebar-head">
+                <span>Відео</span>
+                <span>4 Videos</span>
+            </div>
+
+            <div class="vkss-video-list">
+                <div class="vkss-video-item active"
+                     onclick="setVkssVideo('https://www.youtube.com/embed/JWAZd9yvkeA', this)">
+                    <div class="vkss-video-thumb-mini"></div>
+                    <div class="vkss-video-item-title">ВІЙСЬКОВИЙ КОЛЕДЖ СЕРЖАНТСЬКОГО СКЛАДУ ХНУПС</div>
+                </div>
+
+                <div class="vkss-video-item" onclick="setVkssVideo('https://www.youtube.com/embed/R2gqyGWm2EA', this)">
+                    <div class="vkss-video-thumb-mini"></div>
+                    <div class="vkss-video-item-title">МИ НАВЧАЄМО ПЕРЕМАГАТИ СТАНЬ ЗАХИСНИКОМ НЕБА УКРАЇНИ</div>
+                </div>
+
+                <div class="vkss-video-item" onclick="setVkssVideo('https://www.youtube.com/embed/yp9aAnjo7X4', this)">
+                    <div class="vkss-video-thumb-mini"></div>
+                    <div class="vkss-video-item-title">ВІЙСЬКОВИЙ КОЛЕДЖ СЕРЖАНТСЬКОГО СКЛАДУ</div>
+                </div>
+
+                <div class="vkss-video-item" onclick="setVkssVideo('https://www.youtube.com/embed/0Xf9G2XRvWw', this)">
+                    <div class="vkss-video-thumb-mini"></div>
+                    <div class="vkss-video-item-title">ВИПУСК ПРОФЕСІЙНИХ СЕРЖАНТІВ КОЛЕДЖУ ХУПС</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vkss-video-main">
+            <iframe id="vkssMainVideo" src="https://www.youtube.com/embed/JWAZd9yvkeA" title="Відео ВКСС"
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+<section class="vkss-content-section">
+    <h2 class="vkss-subsection-title">Фотогалерея</h2>
+    <div class="vkss-gallery-wrap">
+        <button class="vkss-gallery-arrow left" onclick="moveVkssGallery(-1)">&#10094;</button>
+        <div class="vkss-gallery-slider">
+            <div class="vkss-gallery-track" id="vkssGalleryTrack">
+                <img class="vkss-gallery-slide" src="images/01.jpg" alt="Галерея 1">
+                <img class="vkss-gallery-slide" src="images/02.jpg" alt="Галерея 2">
+                <img class="vkss-gallery-slide" src="images/03.jpg" alt="Галерея 3">
+                <img class="vkss-gallery-slide" src="images/04.jpg" alt="Галерея 4">
+            </div>
+        </div>
+        <button class="vkss-gallery-arrow right" onclick="moveVkssGallery(1)">&#10095;</button>
+        <div class="vkss-gallery-dots">
+            <button class="vkss-gallery-dot active" onclick="goToVkssGallery(0)"></button>
+            <button class="vkss-gallery-dot" onclick="goToVkssGallery(1)"></button>
+            <button class="vkss-gallery-dot" onclick="goToVkssGallery(2)"></button>
+            <button class="vkss-gallery-dot" onclick="goToVkssGallery(3)"></button>
+        </div>
+    </div>
+</section>
+<section class="vkss-content-section" style="width: 100%">
+    <div class="vkss-leaders-section">
+        <h2 class="vkss-leaders-title">Керівництво<br>Військового коледжу сержантського складу</h2>
+        <div class="vkss-leaders-grid">
+            <article class="vkss-leader-card">
+                <h4>Начальник Військового коледжу сержантського складу</h4>
+                <p>полковник</p>
+                <p>КІВШАР</p>
+                <p>ОЛЕКСАНДР</p>
+                <p>АНАТОЛІЙОВИЧ</p>
+            </article>
+            <article class="vkss-leader-card">
+                <h4>Заступник начальника коледжу з навчальної роботи – начальник навчального відділення</h4>
+                <p>підполковник</p>
+                <p>(спеціаліст вищої категорії)</p>
+                <p>ГРИЗОДУБ</p>
+                <p>АНАТОЛІЙ</p>
+                <p>ВАСИЛЬОВИЧ</p>
+            </article>
+            <article class="vkss-leader-card">
+                <h4>Заступник начальника коледжу</h4>
+                <p>підполковник</p>
+                <p>ЛУЦЕНКО</p>
+                <p>СЕРГІЙ</p>
+                <p>ВОЛОДИМИРОВИЧ</p>
+            </article>
+            <article class="vkss-leader-card">
+                <h4>Заступник начальника коледжу з психологічної підтримки персоналу - начальник групи психологічної
+                    підтримки персоналу</h4>
+                <p>підполковник</p>
+                <p>ШАПОВАЛ</p>
+                <p>ОЛЕГ</p>
+                <p>ОЛЕГОВИЧ</p>
+            </article>
+            <article class="vkss-leader-card">
+                <h4>Заступник начальника коледжу з логістики – начальник групи логістичного забезпечення</h4>
+                <p>підполковник</p>
+                <p>КРАВЧЕНКО</p>
+                <p>СЕРГІЙ</p>
+                <p>ОЛЕКСАНДРОВИЧ</p>
+            </article>
+            <article class="vkss-leader-card">
+                <h4>Головний сержант коледжу</h4>
+                <p>майстер-сержант</p>
+                <p>ПАВЛЮК</p>
+                <p>ІГОР</p>
+                <p>МИКОЛАЙОВИЧ</p>
+            </article>
+        </div>
+    </div>
+</section>
+<section class="vkss-content-section">
+    <div class="vkss-container">
+        <h2 class="vkss-title">
+            Військовий коледж сержантського складу
+        </h2>
+        <p class="vkss-subtitle">
+            <b>Військовий коледж сержантського складу Харківського національного університету Повітряних Сил</b> –
+            заклад фахової передвищої військової освіти, що здійснює підготовку військових фахівців
+            сержантського (старшинського) складу для проходження військової служби за контрактом
+            у Збройних Силах України.
+        </p>
+        <!-- Загальна інформація -->
+        <div class="vkss-card">
+            <h3>📌 Загальна інформація</h3>
+            <ul>
+                <li><strong>Дата створення:</strong> 30 липня 2010 року.</li>
+                <li><strong>Підстава:</strong> Постанова Кабінету Міністрів України від 13 травня 2009 року №467,
+                    спільний наказ Міністерства оборони та Міністерства освіти і науки України від 21 вересня 2009 року
+                    №476/877.
+                </li>
+                <li><strong>Форма навчання:</strong> очна (схема навчання – “курсант”).</li>
+                <li><strong>Термін навчання:</strong> 2 роки.</li>
+                <li><strong>Фінансування:</strong> за рахунок коштів державного бюджету (держзамовлення).</li>
+            </ul>
+        </div>
+        <!-- Спеціальності -->
+        <div class="vkss-card">
+            <h3>🎓 Спеціальності</h3>
+            <p><strong>К6 Забезпечення військ (сил):</strong></p>
+            <ul>
+                <li>Комплекси та засоби автоматизації автоматизованої системи управління авіацією та протиповітряною
+                    обороною.
+                </li>
+            </ul>
+            <p><strong>К7 Озброєння та військова техніка:</strong></p>
+            <ul>
+                <li>Технічне обслуговування військових літаків, вертольотів та авіадвигунів;</li>
+                <li>Авіаційне озброєння.</li>
+                <li>Експлуатація авіаційного обладнання військових літаків та вертольотів.</li>
+                <li>Експлуатація радіоелектронного обладнання літаків, вертольотів і авіаційних ракет.</li>
+                <li>Безпілотні авіаційні комплекси оперативно-тактичного, оперативного та стратегічного класів.</li>
+                <li>Експлуатація наземних засобів радіоелектронного та інформаційного забезпечення польотів авіації.
+                </li>
+                <li>Експлуатація зенітних ракетних комплексів та систем середньої дальності.</li>
+                <li>Експлуатація радіоелектронних засобів інформаційного забезпечення і управління зенітними ракетними
+                    комплексами та системами.
+                </li>
+                <li>Експлуатація радіотехнічних систем та пристроїв засобів радіолокації.</li>
+                <li>Експлуатація систем і комплексів зенітного озброєння Сухопутних військ.</li>
+            </ul>
+        </div>
+        <!-- Вимоги -->
+        <div class="vkss-card">
+            <h3>✅ Вимоги до вступу</h3>
+            <p>Приймаються <b>громадяни України</b>, які мають:</p>
+            <ul>
+                <li>повну загальну середню освіту;</li>
+                <li>диплом “кваліфікованого робітника”;</li>
+                <li>диплом молодшого спеціаліста чи фахового молодшого бакалавра;</li>
+                <li>ступінь молодшого бакалавра, бакалавра або магістра.</li>
+            </ul>
+        </div>
+        <!-- Після навчання -->
+        <div class="vkss-card">
+            <h3>🎖️ Після завершення</h3>
+            <ul>
+                <li>Звання: молодший сержант;</li>
+                <li>Диплом: фахового молодшого бакалавра;</li>
+                <li>Призначення: на первинні сержантські (старшинські) посади у Збройних Силах України відповідно до
+                    набутої військово-облікової спеціальності;
+                </li>
+                <li>Можливість продовження навчання: вступ на 2–3 курс у вищі військові навчальні заклади для здобуття
+                    першого (бакалаврського) рівня вищої освіти.
+                </li>
+            </ul>
+        </div>
+        <!-- Контакти -->
+        <div class="vkss-card vkss-contact">
+            <h3>📞 Контакти</h3>
+            <p>
+                Телефон:
+                <a href="tel:+380932416380">+38 (093) 241-63-80</a>
+            </p>
+            <p>
+                Email:
+                <a href="mailto:vkss@hups.mil.gov.ua">vkss@hups.mil.gov.ua</a>
+            </p>
+        </div>
+
+    </div>
+</section>
 </body>
-<script>
-function openDepartmentsModal() {
-  document.getElementById('departmentsModal').style.display = 'flex'
-}
-
-function closeDepartmentsModal() {
-  document.getElementById('departmentsModal').style.display = 'none'
-}
-
-window.addEventListener('click', function(e) {
-  const modal = document.getElementById('departmentsModal')
-  if (e.target === modal) {
-    closeDepartmentsModal()
-  }
-})
-
-</script>
+<script src="js/anime.js"></script>
 </html>
